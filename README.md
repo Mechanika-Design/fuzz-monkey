@@ -6,3 +6,5 @@ Fuzz Monkey
 > Robust and versatile headless monkey (fuzz) testing for the web with reproducible steps, error alerts, strategy sharing and many other good things.
 
 ![screenshot](https://via.placeholder.com/800x400?text=Project+Screenshot "screenshot")
+
+It's important to remember that [monkey testing](https://en.wikipedia.org/wiki/Monkey_testing) should be used in conjunction with smarter tests such as [integration tests](https://en.wikipedia.org/wiki/Integration_testing).
