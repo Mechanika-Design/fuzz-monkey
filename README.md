@@ -13,5 +13,5 @@ It's important to remember that [monkey testing](https://en.wikipedia.org/wiki/M
 
 ## Getting Started
 ```console
-node --experimental-modules ./bin/index.mjs --headless=false --url https://bellhelmets.com/
+node --experimental-modules ./bin/index.mjs --debug --url https://bellhelmets.com/
 ```
