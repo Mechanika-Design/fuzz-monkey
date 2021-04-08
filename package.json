@@ -11,12 +11,21 @@
     "test": "taskfile test",
     "coverage": "taskfile test/coverage"
   },
+  "dependencies": {
+    "capitalize": "^2.0.0",
+    "chalk": "^2.4.2",
+    "figlet": "^1.2.1",
+    "puppeteer": "^1.12.1"
+  },
   "devDependencies": {
+    "@babel/plugin-syntax-import-meta": "^7.2.0",
     "ava": "^1.2.0",
     "coveralls": "^3.0.2",
     "nyc": "13.2.0",
     "prettier": "^1.16.4",
-    "puppeteer": "^1.12.1",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-replace": "^2.1.0",
     "taskfile": "^0.8.5"
   },
   "ava": {
