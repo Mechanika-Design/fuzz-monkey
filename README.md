@@ -10,3 +10,7 @@ Fuzz Monkey
 ![screenshot](https://via.placeholder.com/800x400?text=Project+Screenshot "screenshot")
 
 It's important to remember that [monkey testing](https://en.wikipedia.org/wiki/Monkey_testing) should be used in conjunction with smarter tests such as [integration tests](https://en.wikipedia.org/wiki/Integration_testing).
+
+## Getting Started
+
+> node --experimental-modules ./bin/index.mjs --headless=false --url https://bellhelmets.com/
