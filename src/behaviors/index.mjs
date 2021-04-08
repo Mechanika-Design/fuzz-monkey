@@ -1,1 +1,1 @@
-export { default as click } from './click.mjs';
+export { default as click } from './clicker.mjs';
