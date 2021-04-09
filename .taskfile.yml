@@ -1,12 +1,19 @@
+- name: build
+  task: rollup -c rollup.config.js
+
 - name: format
-  tasks:
+  tasks: 
     - prettier --write '{bin,src}/**/*.{mjs,js}'
     - prettier --write '*.{js,json}'
 
 - name: test/spec
-  task: nyc ava
+  tasks:
+    - eslint "{bin,src}/**/**.{mjs,js}"
+    #- - prettier --list-different '{bin,src}/**/*.{mjs,js}'
+    #- - prettier --list-different '*.{mjs,js,json}'
+    # - - - nyc ava
 
-- name: test/coverage
+- name: coverage
   tasks:
     - taskfile test/spec
     - - nyc report --reporter=text-lcov | coveralls
