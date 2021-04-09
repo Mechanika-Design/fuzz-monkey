@@ -6,6 +6,7 @@ Fuzz Monkey
 > Robust and versatile headless monkey (fuzz) testing for the web with reproducible steps, error alerts, strategy sharing and many other good things.
 
 ![Travis](http://img.shields.io/travis/com/bell-lab-apps/fuzz-monkey.svg?style=for-the-badge)
+![Project Status: WIP](https://img.shields.io/badge/REPO%20STATUS-WIP-orange?style=for-the-badge)
 
 ![screenshot](https://via.placeholder.com/800x400?text=Project+Screenshot "screenshot")
 
