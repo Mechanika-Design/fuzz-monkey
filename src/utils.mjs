@@ -8,8 +8,17 @@ export function runBehavior(params) {
   return behaviors[name](params);
 }
 
-export function mockNatives(page) {
+export function silenceDialogs(page) {
   page.exposeFunction('alert', R.identity);
   page.exposeFunction('confirm', R.identity);
   page.exposeFunction('prompt', R.identity);
+}
+
+export async function awaitPage(timeout) {
+    try {
+        await page.waitForNavigation({
+            waitUntil: 'load',
+            timeout
+        });
+    } catch {}
 }

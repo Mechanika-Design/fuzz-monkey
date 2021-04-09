@@ -1,44 +1,45 @@
 {
-  "name": "fuzz-monkey",
-  "version": "0.1.0",
-  "description": "Robust and versatile headless monkey (fuzz) testing for the web with reproducible steps, error alerts, strategy sharing and many other good things.",
-  "main": "bin/index.js",
-  "repository": "https://github.com/bell-lab-apps/fuzz-monkey.git",
-  "author": "Warren Galyen <wgalyen@bellhelmets.com>",
-  "license": "MIT",
-  "scripts": {
-    "format": "taskfile format",
-    "test": "taskfile test",
-    "coverage": "taskfile test/coverage"
-  },
-  "dependencies": {
-    "capitalize": "^2.0.0",
-    "chalk": "^2.4.2",
-    "figlet": "^1.2.1",
-    "minimist": "^1.2.0",
-    "puppeteer": "^1.12.2",
-    "ramda": "^0.26.1"
-  },
-  "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-syntax-import-meta": "^7.2.0",
-    "ava": "^1.2.1",
-    "core-js": "^2.6.3",
-    "coveralls": "^3.0.2",
-    "esm": "^3.2.1",
-    "nyc": "13.2.0",
-    "prettier": "^1.16.4",
-    "rollup": "^1.1.2",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-replace": "^2.1.0",
-    "sinon": "^7.2.3",
-    "taskfile": "^0.8.5"
-  },
-  "ava": {
-    "failFast": true,
-    "require": [
-      "esm",
-      "core-js"
-    ]
-  }
+    "name": "fuzz-monkey",
+    "version": "0.1.0",
+    "description": "Robust and versatile headless monkey (fuzz) testing for the web with reproducible steps, error alerts, strategy sharing and many other good things.",
+    "main": "bin/index.js",
+    "repository": "https://github.com/bell-lab-apps/fuzz-monkey.git",
+    "author": "Warren Galyen <wgalyen@bellhelmets.com>",
+    "license": "MIT",
+    "scripts": {
+        "format": "taskfile format",
+        "test": "taskfile test",
+        "coverage": "taskfile test/coverage"
+    },
+    "dependencies": {
+        "capitalize": "^2.0.0",
+        "chalk": "^2.4.2",
+        "figlet": "^1.2.1",
+        "minimist": "^1.2.0",
+        "moment": "^2.24.0",
+        "puppeteer": "^1.12.2",
+        "ramda": "^0.26.1"
+    },
+    "devDependencies": {
+        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+        "@babel/plugin-syntax-import-meta": "^7.2.0",
+        "ava": "^1.2.1",
+        "core-js": "^2.6.3",
+        "coveralls": "^3.0.2",
+        "esm": "^3.2.1",
+        "nyc": "13.2.0",
+        "prettier": "^1.16.4",
+        "rollup": "^1.1.2",
+        "rollup-plugin-babel": "^4.3.2",
+        "rollup-plugin-replace": "^2.1.0",
+        "sinon": "^7.2.3",
+        "taskfile": "^0.8.5"
+    },
+    "ava": {
+        "failFast": true,
+        "require": [
+            "esm",
+            "core-js"
+        ]
+    }
 }
