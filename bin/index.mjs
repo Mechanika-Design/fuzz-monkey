@@ -16,7 +16,6 @@ var bin = path
     .dirname(new URL(import.meta.url).pathname)
     .replace(/^\/|\/$/g, '');
 bin = bin.replace('%20', ' ');
-console.log(bin);
 const pkg = JSON.parse(
     fs.readFileSync(path.resolve(`${bin}/../package.json`), 'utf8')
 );

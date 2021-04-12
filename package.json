@@ -4,8 +4,8 @@
     "description": "Robust and versatile headless monkey (fuzz) testing for the web with reproducible steps, error alerts, strategy sharing and many other good things.",
     "main": "bin/index.mjs",
     "bin": {
-        "fm": "bin/index.js",
-        "fuzzmonkey": "bin/index.js"
+        "fm": "bin/index.mjs",
+        "fuzzmonkey": "bin/index.mjs"
     },
     "repository": "https://github.com/bell-lab-apps/fuzz-monkey.git",
     "author": "Warren Galyen <wgalyen@bellhelmets.com>",

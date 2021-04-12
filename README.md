@@ -8,7 +8,7 @@ Fuzz Monkey
 ![Travis](http://img.shields.io/travis/com/bell-lab-apps/fuzz-monkey.svg?style=for-the-badge)
 ![Project Status: WIP](https://img.shields.io/badge/REPO%20STATUS-WIP-orange?style=for-the-badge)
 
-![screenshot](https://via.placeholder.com/800x400?text=Project+Screenshot "screenshot")
+![screenshot](media/screenshot.png "screenshot")
 
 It's important to remember that [monkey testing](https://en.wikipedia.org/wiki/Monkey_testing) should be used in conjunction with smarter tests such as [integration tests](https://en.wikipedia.org/wiki/Integration_testing).
 
