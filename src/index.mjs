@@ -1,4 +1,5 @@
 import path from 'path';
+import process from "process"
 import puppeteer from 'puppeteer';
 import * as R from 'ramda';
 import moment from 'moment';
@@ -25,12 +26,12 @@ export default async function main({
     page.on('pageerror', async error => {
         helpers.error(error.toString());
         queue.add(
-          page.screenshot({
-              path: path.resolve(
-                screenshots,
-                `fuzzmonkey_error_${moment().format()}.png`
-              )
-          })
+            page.screenshot({
+                path: path.resolve(
+                    screenshots,
+                    `fuzzmonkey_error_${moment().format()}.png`
+                )
+            })
         );
     });
 
@@ -41,12 +42,12 @@ export default async function main({
 
     for (const current of R.range(0, iterations)) {
         const log = helpers.info(current + 1, iterations);
-        await utils.runBehaviour({ page, log });
+        await utils.runBehavior({ page, log });
     }
 
-    console.log(queue.size);
     await Promise.all([...queue]);
-
     await browser.close();
     await hooks.destroy(page);
+
+    process.exitCode = R.clamp(0, 1)(queue.size);
 }
