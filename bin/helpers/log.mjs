@@ -3,19 +3,19 @@ import numeral from 'numeral';
 import capitalise from 'capitalize';
 
 export function error(message) {
-  const getTypeColour = () =>
+  const getTypeColor = () =>
     chalk.level > 1 ? chalk.hex('#ff6666') : chalk.redBright;
 
   console.log(
     '\n',
-    getTypeColour().italic.underline('Error'),
+    getTypeColor().italic.underline('Error'),
     chalk.gray('•'),
     chalk.whiteBright(message),
     '\n'
   );
 }
 
-export function info(current, total) {x
+export function info(current, total) {
   const getTypeColor = () =>
     chalk.level > 1 ? chalk.hex('#ffd2e8') : chalk.magentaBright;
 
