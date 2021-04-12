@@ -3,7 +3,7 @@ import process from 'process';
 import * as R from 'ramda';
 import humps from 'humps';
 
-export function getConfig (argv) {
+export function getConfig(argv) {
     const defaults = {
         url: 'https://www.google.com/',
         hooks: path.resolve(process.cwd(), 'fuzzmonkey.hooks.mjs'),
@@ -18,7 +18,7 @@ export function getConfig (argv) {
     });
 }
 
-export async function getHooks (filepath) {
+export async function getHooks(filepath) {
     const defaults = {
         create: R.identity,
         destroy: R.identity

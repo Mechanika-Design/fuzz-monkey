@@ -8,7 +8,7 @@ export default async function typer({ page, log }) {
         await page.evaluate(async () => {
             const inputs = [...document.querySelectorAll('input')];
             const input =
-              inputs[await window.randomBetween(0, inputs.length - 1)];
+                inputs[await window.randomBetween(0, inputs.length - 1)];
             const clear = window.fiftyFifty();
             input && clear && (input.value = '');
             input && input.focus();
@@ -23,11 +23,11 @@ export default async function typer({ page, log }) {
         pressEnter && (await page.keyboard.press('Enter'));
 
         return void log(
-          'typer',
-          `${chalk.white(text.length)} ${chalk.gray(
-            pluralise('characters', text.length)
-          )}`,
-          pressEnter ? chalk.whiteBright.italic('enter') : ''
+            'typer',
+            `${chalk.white(text.length)} ${chalk.gray(
+                pluralise('characters', text.length)
+            )}`,
+            pressEnter ? chalk.whiteBright.italic('enter') : ''
         );
     } catch {}
 }

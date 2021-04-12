@@ -3,14 +3,14 @@
 
 - name: format
   tasks: 
-    - prettier --write '{bin,src}/**/*.{mjs,js}'
-    - prettier --write '*.{js,json}'
+    - prettier --write "{bin,src}/**/*.{mjs,js}"
+    - prettier --write "*.{js,json}"
 
 - name: test/spec
   tasks:
     - eslint "{bin,src}/**/**.{mjs,js}"
-    #- - prettier --list-different '{bin,src}/**/*.{mjs,js}'
-    #- - prettier --list-different '*.{mjs,js,json}'
+    - - prettier --list-different "{bin,src}/**/*.{mjs,js}"
+    - - prettier --list-different "*.{mjs,js,json}"
     # - - - nyc ava
 
 - name: coverage

@@ -16,7 +16,7 @@ const pkg = JSON.parse(
     fs.readFileSync(path.resolve(`${bin}/../package.json`), 'utf8')
 );
 
-async function main () {
+async function main() {
     const header = figlet.textSync(capitalise(pkg.name), { font: 'univers' });
     header && console.log(chalk.gray(header));
     console.log(

@@ -5,18 +5,18 @@ import presets from './helpers/network-presets.mjs';
 const getCDPSession = R.once(page => page.target().createCDPSession());
 
 const defaultNetworkConditions = R.find(R.propEq('label', 'Regular 4G'))(
-  presets
+    presets
 );
 
 export function runBehavior(params) {
-  const keys = Object.keys(actions);
-  const count = keys.length;
-  const name = keys[Math.floor(Math.random() * count)];
-  return actions[name](params);
+    const keys = Object.keys(actions);
+    const count = keys.length;
+    const name = keys[Math.floor(Math.random() * count)];
+    return actions[name](params);
 }
 
 export function silenceDialogs(page) {
-  page.exposeFunction('print', R.identity);
+    page.exposeFunction('print', R.identity);
 }
 
 export function exposeFunctions(page) {
@@ -25,39 +25,39 @@ export function exposeFunctions(page) {
 }
 
 export function pageDimensions(page) {
-  return page.evaluate(() => ({
-    height: window.innerHeight,
-    width: window.innerWidth
-  }));
+    return page.evaluate(() => ({
+        height: window.innerHeight,
+        width: window.innerWidth
+    }));
 }
 
 export async function emulateNetworkConditions(
-  page,
-  conditions = defaultNetworkConditions
+    page,
+    conditions = defaultNetworkConditions
 ) {
-  const client = await getCDPSession(page);
-  return client.send(
-    'Network.emulateNetworkConditions',
-    R.dissoc('label')(conditions)
-  );
+    const client = await getCDPSession(page);
+    return client.send(
+        'Network.emulateNetworkConditions',
+        R.dissoc('label')(conditions)
+    );
 }
 
 export function handleDialogs(page) {
-  page.on('dialog', dialog => {
-    if (dialog.type() === 'beforeunload') {
-      return void dialog.dismiss();
-    }
-    const f = fiftyFifty() ? 'accept' : 'dismiss';
-    return void dialog[f];
-  });
+    page.on('dialog', dialog => {
+        if (dialog.type() === 'beforeunload') {
+            return void dialog.dismiss();
+        }
+        const f = fiftyFifty() ? 'accept' : 'dismiss';
+        return void dialog[f];
+    });
 }
 
 export function preventNavigation(page) {
-  page.evaluate(() => {
-    window.onbeforeunload = () => {
-      return 'You are not going anywhere...';
-    };
-  });
+    page.evaluate(() => {
+        window.onbeforeunload = () => {
+            return 'You are not going anywhere...';
+        };
+    });
 }
 
 export function randomBetween(min, max) {
