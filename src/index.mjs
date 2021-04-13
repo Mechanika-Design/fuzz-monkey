@@ -6,17 +6,28 @@ import * as utils from './utils';
 
 const queue = new Set();
 
-export default async function main(config) {
-    const options = config.debug ? { headless: false, devtools: true } : {};
+export default async function main({
+    url,
+    debug,
+    iterations,
+    hooks,
+    report,
+    output
+}) {
+    const options = debug ? { headless: false, devtools: true } : {};
     const browser = await puppeteer.launch(options);
     const page = await browser.newPage();
+    utils.silenceDialogs(page);
+    utils.exposeFunctions(page);
+    utils.emulateNetworkConditions(page);
+    utils.handleDialogs(page);
 
     page.on('pageerror', async error => {
-        config.output.error(error.toString());
+        output.error(error.toString());
         queue.add(
             page.screenshot({
                 path: path.join(
-                    config.report,
+                    report,
                     'screenshots',
                     `${moment().format('HH:mm:ss')}.png`
                 )
@@ -24,30 +35,24 @@ export default async function main(config) {
         );
     });
 
-    await config.hooks.create(page, config);
-    await page.tracing.start({
-        path: path.join(config.report, 'timeline.json')
-    });
-    await page.goto(config.url);
+    await hooks.create(page);
+    await page.tracing.start({ path: path.join(report, 'timeline.json') });
+    await page.goto(url);
 
-    utils.silenceDialogs(page);
-    utils.exposeFunctions(page);
-    utils.emulateNetworkConditions(page);
-    utils.handleDialogs(page);
     utils.preventNavigation(page);
 
-    for (const current of R.range(0, config.iterations)) {
+    for (const current of R.range(0, iterations)) {
         await utils.runAction({
             page,
-            output: config.output.info(current + 1, config.iterations)
+            output: output.info(current + 1, iterations)
         });
         await Promise.all([...queue]);
     }
 
     await page.tracing.stop();
     await browser.close();
-    await config.hooks.destroy(page, config);
+    await hooks.destroy(page);
 
-    config.output.summary(config.iterations, queue.size);
+    output.summary(iterations, queue.size);
     return queue.size;
 }
