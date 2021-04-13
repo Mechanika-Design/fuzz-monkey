@@ -23,3 +23,6 @@ Thumbs.db
 # Build #
 #############
 bin/index.js
+
+# reports
+reports

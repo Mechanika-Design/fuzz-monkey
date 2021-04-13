@@ -37,7 +37,8 @@ async function main() {
     );
     const config = utils.getConfig(argv);
     const hooks = await utils.getHooks(config.hooks);
-    return run({ ...config, hooks, output });
+    const report = await utils.emptyReport(config);
+    return run({ ...config, hooks, output, report });
 }
 
 main();
