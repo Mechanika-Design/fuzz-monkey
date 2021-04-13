@@ -6,28 +6,21 @@ import * as utils from './utils.mjs';
 
 const queue = new Set();
 
-export default async function main({
-    url,
-    debug,
-    iterations,
-    hooks,
-    report,
-    output
-}) {
-    const options = debug ? { headless: false, devtools: true } : {};
+const templates = new Set();
+
+export default async function main(config) {
+    const options = config.debug ? { headless: false, devtools: true } : {};
     const browser = await puppeteer.launch(options);
     const page = await browser.newPage();
-    utils.silenceDialogs(page);
-    utils.exposeFunctions(page);
-    utils.emulateNetworkConditions(page);
-    utils.handleDialogs(page);
+
+    const { url, template, iterations } = await utils.readTemplate(config);
 
     page.on('pageerror', async error => {
-        output.error(error.toString());
+        config.output.error(error.toString());
         queue.add(
             page.screenshot({
                 path: path.join(
-                    report,
+                    config.report,
                     'screenshots',
                     `${moment().format('HH:mm:ss')}.png`
                 )
@@ -35,24 +28,36 @@ export default async function main({
         );
     });
 
-    await hooks.create(page);
-    await page.tracing.start({ path: path.join(report, 'timeline.json') });
+    await config.hooks.create(page, config);
+    await page.tracing.start({
+        path: path.join(config.report, 'timeline.json')
+    });
     await page.goto(url);
 
+    utils.silenceDialogs(page);
+    utils.exposeFunctions(page);
+    utils.emulateNetworkConditions(page);
+    utils.handleDialogs(page);
     utils.preventNavigation(page);
 
     for (const current of R.range(0, iterations)) {
-        await utils.runAction({
+        const name = R.isNil(template) ? null : template[current].name;
+
+        const action = await utils.runAction(name, {
             page,
-            output: output.info(current + 1, iterations)
+            output: config.output.info(current + 1, config.iterations),
+            template: R.isNil(name) ? {} : template[current].meta
         });
+        templates.add(action);
         await Promise.all([...queue]);
     }
 
+    await utils.writeTemplate(config, templates);
+
     await page.tracing.stop();
     await browser.close();
-    await hooks.destroy(page);
+    await config.hooks.destroy(page, config);
 
-    output.summary(iterations, queue.size);
+    config.output.summary(config, queue.size);
     return queue.size;
 }

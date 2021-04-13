@@ -38,16 +38,17 @@ export function info(current, total) {
     };
 }
 
-export function summary(total, errors) {
+export function summary(config, errors) {
     const color = errors === 0 ? chalk.greenBright : chalk.redBright;
 
     console.log(
         `\n${color('•')}`,
         chalk.gray('Finished running'),
-        chalk.whiteBright(numeral(total).format('0,0')),
+        chalk.whiteBright(numeral(config.iterations).format('0,0')),
         chalk.gray('actions which resulted in'),
         chalk.whiteBright(numeral(errors).format('0,0')),
-        chalk.gray(`${pluralise('error', total)}.`),
-        '\n'
+        chalk.gray(`${pluralise('error', config.iterations)}.`),
+        chalk.gray(`\n  Re-run using:`),
+        chalk.white(`fuzzmonkey --template ${config.report}/history.json\n`)
     );
 }
