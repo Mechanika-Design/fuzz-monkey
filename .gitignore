@@ -26,3 +26,6 @@ bin/index.js
 
 # reports
 reports
+
+# config
+fuzzmonkey.hooks.mjs
