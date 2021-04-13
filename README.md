@@ -1,4 +1,4 @@
-![Fuzz Monkey Logo](media/logo.png "Fuzz Monkey Logo")
+<img src="media/logo.png" alt="Fuzzmonkey" width="350">
 
 > Robust and versatile headless monkey (fuzz) testing for the web with reproducible steps, error alerts, strategy sharing and many other good things.
 
