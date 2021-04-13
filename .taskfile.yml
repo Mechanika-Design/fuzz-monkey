@@ -2,24 +2,28 @@
   task: rollup -c rollup.config.js
 
 - name: format
-  tasks: 
-    - prettier --write "{bin,src}/**/*.{mjs,js}"
-    - prettier --write "*.{js,json}"
+  tasks:
+      - prettier --write "{bin,src}/**/*.{mjs,js}"
+      - prettier --write "*.{mjs,js,json,yml}"
 
 - name: test/spec
   tasks:
-    - eslint "{bin,src}/**/**.{mjs,js}"
-    - - prettier --list-different "{bin,src}/**/*.{mjs,js}"
-    - - prettier --list-different "*.{mjs,js,json}"
-    # - - - nyc ava
+      - eslint "{bin,src}/**/**.{mjs,js}"
+      - - prettier --list-different "{bin,src}/**/*.{mjs,js}"
+      - - prettier --list-different "*.{mjs,js,json}"
+      # - - - nyc ava
 
 - name: coverage
   tasks:
-    - taskfile test/spec
-    - - nyc report --reporter=text-lcov | coveralls
+      - taskfile test/spec
+      - - nyc report --reporter=text-lcov | coveralls
 
 - name: test
-  task: taskfile test/spec
+  tasks:
+      - eslint "{bin,src}/**/**.{mjs,js}"
+      - - prettier --list-different "{bin,src}/**/*.{mjs,js}"
+      - - prettier --list-different "*.{mjs,js,json,yml}"
+      # - - - nyc ava
 
 - name: prepublish
   task: yarn build

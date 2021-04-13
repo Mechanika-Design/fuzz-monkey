@@ -2,8 +2,8 @@ language: node_js
 node_js: stable
 
 script:
-  - npm i
-  - yarn
-  - yarn test
+    - npm i
+    - yarn
+    - yarn test
 
 after_success: yarn run coverage
