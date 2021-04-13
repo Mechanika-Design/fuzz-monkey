@@ -2,13 +2,15 @@ import chalk from 'chalk';
 import numeral from 'numeral';
 import capitalise from 'capitalize';
 
+export const highlight =
+    chalk.level > 1 ? chalk.hex('#ffd2e8') : chalk.magentaBright;
+
 export function error(message) {
-    const getTypeColor = () =>
-        chalk.level > 1 ? chalk.hex('#ff6666') : chalk.redBright;
+    const color = chalk.level > 1 ? chalk.hex('#ff6666') : chalk.redBright;
 
     console.log(
         '\n',
-        getTypeColor().italic.underline('Error'),
+        color.italic.underline('Error'),
         chalk.gray('•'),
         chalk.whiteBright(message),
         '\n'
@@ -16,9 +18,6 @@ export function error(message) {
 }
 
 export function info(current, total) {
-    const getTypeColor = () =>
-        chalk.level > 1 ? chalk.hex('#ffd2e8') : chalk.magentaBright;
-
     const total_ = numeral(total).format('0,0');
 
     return (type, ...message) => {
@@ -31,7 +30,7 @@ export function info(current, total) {
             ),
             chalk.gray(`(of ${total_})`),
             chalk.gray('•'),
-            getTypeColor().bold(capitalise(type).padEnd(10)),
+            highlight.bold(capitalise(type).padEnd(10)),
             chalk.gray('•'),
             ...message
         );
@@ -39,11 +38,10 @@ export function info(current, total) {
 }
 
 export function summary(total, errors) {
-    const getErrorColor = () =>
-        errors === 0 ? chalk.greenBright : chalk.redBright;
+    const color = errors === 0 ? chalk.greenBright : chalk.redBright;
 
     console.log(
-        `\n${getErrorColor()('•')}`,
+        `\n${color('•')}`,
         chalk.gray('Finished running'),
         chalk.whiteBright(total),
         chalk.gray('actions which resulted in'),

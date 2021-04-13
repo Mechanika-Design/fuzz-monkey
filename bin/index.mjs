@@ -9,6 +9,7 @@ import minimist from 'minimist';
 import run from '../src/index.mjs';
 import * as utils from './utils.mjs';
 import * as output from './helpers/output.mjs';
+import usage from './helpers/usage.mjs';
 
 const argv = minimist(process.argv.slice(2));
 // remove leading slash and url encoded spaces on Windows
@@ -23,6 +24,11 @@ const pkg = JSON.parse(
 async function main() {
     const header = figlet.textSync(capitalise(pkg.name), { font: 'univers' });
     header && console.log(chalk.gray(header));
+
+    if (!argv.url || argv.help) {
+        return void console.log(usage());
+    }
+
     console.log(
         '\n',
         chalk.gray('Version:'.padStart(header ? 121 : 0)),
