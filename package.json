@@ -2,7 +2,7 @@
     "name": "fuzz-monkey",
     "version": "0.2.1",
     "description": "Robust and versatile headless monkey (fuzz) testing for the web with reproducible steps, error alerts, strategy sharing and many other good things.",
-    "main": "bin/index.mjs",
+    "main": "bin/index.js",
     "bin": {
         "fm": "bin/index.mjs",
         "fuzzmonkey": "bin/index.mjs"
