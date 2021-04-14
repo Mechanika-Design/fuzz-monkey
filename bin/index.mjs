@@ -28,7 +28,7 @@ async function main() {
     header && console.log(chalk.gray(header));
 
     if ((!argv.url && !argv.template) || argv.help) {
-        return void console.log(usage());
+        return console.log(usage());
     }
 
     console.log(
