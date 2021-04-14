@@ -14,10 +14,10 @@ export default async function reloader({ page, output }) {
         await utils.preventNavigation(page);
 
         output(
-          'reloader',
-          `${chalk.whiteBright(numeral(duration).format('0,0'))}${chalk.gray(
-            'ms'
-          )}`
+            'reloader',
+            `${chalk.whiteBright(numeral(duration).format('0,0'))}${chalk.gray(
+                'ms'
+            )}`
         );
     } catch {}
 
