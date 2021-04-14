@@ -5,19 +5,19 @@ import * as utils from '../utils.mjs';
 
 export default async function reloader({ page, output }) {
     try {
-        marky.mark('duration');
-
         await utils.allowNavigation(page);
-        await page.reload({ waitUntil: ['networkidle0', 'domcontentloaded'] });
-        await utils.preventNavigation(page);
 
+        marky.mark('duration');
+        await page.reload({ waitUntil: ['networkidle0', 'domcontentloaded'] });
         const { duration } = marky.stop('duration');
 
+        await utils.preventNavigation(page);
+
         output(
-            'reloader',
-            `${chalk.whiteBright(numeral(duration).format('0,0'))}${chalk.gray(
-                'ms'
-            )}`
+          'reloader',
+          `${chalk.whiteBright(numeral(duration).format('0,0'))}${chalk.gray(
+            'ms'
+          )}`
         );
     } catch {}
 
