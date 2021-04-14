@@ -2,10 +2,10 @@
     "name": "fuzz-monkey",
     "version": "0.3.1",
     "description": "Robust and versatile headless monkey (fuzz) testing for the web with reproducible steps, error alerts, strategy sharing and many other good things.",
-    "main": "bin/index.js",
+    "main": "./bin/index.mjs",
     "bin": {
-        "fm": "bin/index.mjs",
-        "fuzzmonkey": "bin/index.mjs"
+        "wm": "./bin/index.mjs",
+        "fuzzmonkey": "./bin/index.mjs"
     },
     "repository": "https://github.com/bell-lab-apps/fuzz-monkey.git",
     "author": "Warren Galyen <wgalyen@bellhelmets.com>",
@@ -36,8 +36,6 @@
     "devDependencies": {
         "@babel/plugin-syntax-dynamic-import": "^7.8.3",
         "@babel/plugin-syntax-import-meta": "^7.8.3",
-        "@rollup/plugin-babel": "^5.0.0",
-        "@rollup/plugin-replace": "^2.3.2",
         "ava": "^3.8.1",
         "babel-eslint": "^10.1.0",
         "core-js": "^3.6.5",
@@ -54,7 +52,6 @@
         "nyc": "15.0.1",
         "prettier": "^2.0.5",
         "readlint": "^0.7.2",
-        "rollup": "^2.7.3",
         "sinon": "^9.0.2",
         "taskfile": "^0.10.0"
     },
