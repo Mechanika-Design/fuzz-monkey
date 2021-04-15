@@ -22,9 +22,9 @@ export default function usage() {
         '(default: cwd)'
     )}.
      ${chalk.gray(
-      '--strategy'
-    )}    Specify how likely an action is to run ${chalk.gray(
-      '(example: --strategy clicker=10,reloader=0)'
+         '--strategy'
+     )}    Specify how likely an action is to run ${chalk.gray(
+        '(example: --strategy clicker=10,reloader=0)'
     )}.
     ${chalk.gray('--iterations')}  Number of actions to perform ${chalk.gray(
         '(default: 50)'

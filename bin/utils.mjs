@@ -32,10 +32,10 @@ export async function getConfig(argv) {
 
 function getStrategies(strategy) {
     const f = R.compose(
-      R.map(Number),
-      R.fromPairs(),
-      R.map(R.split('=')),
-      R.split(',')
+        R.map(Number),
+        R.fromPairs(),
+        R.map(R.split('=')),
+        R.split(',')
     );
 
     return f(strategy);
