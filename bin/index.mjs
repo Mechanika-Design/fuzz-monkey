@@ -15,7 +15,7 @@ import usage from './helpers/usage.mjs';
 
 const argv = minimist(process.argv.slice(2));
 // remove leading slash and url encoded spaces on Windows
-var bin = path
+let bin = path
     .dirname(new URL(import.meta.url).pathname)
     .replace(/^\/|\/$/g, '');
 bin = bin.replace('%20', ' ');
