@@ -24,7 +24,7 @@ export default function usage() {
      ${chalk.gray(
          '--strategy'
      )}    Specify how likely an action is to run ${chalk.gray(
-        '(example: --strategy clicker=10,reloader=0)'
+        '(example: --strategy clicker=10,formFiller=5,reloader=0)'
     )}.
     ${chalk.gray(
         '--warnings'

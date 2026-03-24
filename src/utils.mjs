@@ -112,7 +112,7 @@ export function takeScreenshot(page, config) {
         path: path.join(
             config.report,
             'screenshots',
-            `${moment().format('HH:mm:ss')}.png`
+            `${moment().format('HH-mm-ss')}.png`
         ),
     });
 }

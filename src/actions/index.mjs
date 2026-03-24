@@ -5,3 +5,4 @@ export { default as scroller } from './scroller.mjs';
 export { default as networker } from './networker.mjs';
 export { default as sizer } from './sizer.mjs';
 export { default as reloader } from './reloader.mjs';
+export { default as formFiller } from './formFiller.mjs';

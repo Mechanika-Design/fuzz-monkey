@@ -7,8 +7,8 @@
         "wm": "./bin/index.mjs",
         "fuzzmonkey": "./bin/index.mjs"
     },
-    "repository": "https://github.com/bell-lab-apps/fuzz-monkey.git",
-    "author": "Warren Galyen <wgalyen@bellhelmets.com>",
+    "repository": "https://github.com/mechanika-design/fuzz-monkey.git",
+    "author": "Warren Galyen",
     "license": "MIT",
     "scripts": {
         "build": "taskfile build",

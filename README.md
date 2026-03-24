@@ -2,9 +2,6 @@
 
 > Robust and versatile headless monkey (fuzz) testing for the web with reproducible steps, error alerts, strategy sharing and many other good things.
 
-![Travis](http://img.shields.io/travis/com/bell-lab-apps/fuzz-monkey.svg?style=for-the-badge)
-![Project Status: WIP](https://img.shields.io/badge/REPO%20STATUS-WIP-orange?style=for-the-badge)
-
 ![screenshot](media/screenshot.png "screenshot")
 
 It's important to remember that [monkey testing](https://en.wikipedia.org/wiki/Monkey_testing) should be used in conjunction with smarter tests such as [integration tests](https://en.wikipedia.org/wiki/Integration_testing).
@@ -14,14 +11,14 @@ It's important to remember that [monkey testing](https://en.wikipedia.org/wiki/M
 Once `fuzzmonkey` has been installed globally, you can begin testing by supplying the `--url` parameter you'd like to test. As that's the only required field, testing begins immediately and proceeds with 50 actions.
 
 ```console
-fuzzmonkey --url https://bellhelmets.com/
+fuzzmonkey --url https://mechanikadesign.com/
 ```
 
 For other parameters you can type `fuzzmonkey --help` at any time.
 
 ### Strategy
 
-By default each action has an equal chance of being chosen at random to be run. However you can tweak this by passing the `--strategy` parameter which allows for a comma separated list of actions followed by how likely they are to be chosen &mdash; for example `--strategy clicker=10,reloader=0` would make clicker 10 times as likely to run than any other action &ndash; aside from reloader which will never run.
+By default each action has an equal chance of being chosen at random to be run. However you can tweak this by passing the `--strategy` parameter which allows for a comma separated list of actions followed by how likely they are to be chosen &mdash; for example `--strategy clicker=10,formFiller=5,reloader=0` would make clicker 10 times as likely to run than any other action, form filler five times as likely, and reloader will never run.
 
 
 ### Authenticating
@@ -76,6 +73,11 @@ Currently we have the following set of monkeys that perform various actions on y
         <td><img src="media/team/typer.svg" alt="Fuzzmonkey" width="50" /></td>
         <td><strong>Typer</strong></td>
         <td>Focuses on random input fields and types random characters.</td>
+    </tr>
+    <tr>
+        <td><img src="media/team/formfiller.svg" alt="Form filler" width="50" /></td>
+        <td><strong>Form filler</strong></td>
+        <td>Fills forms by targeting a random fillable control: text inputs and textareas, <code>&lt;select&gt;</code> options, checkboxes, and radio buttons.</td>
     </tr>
     <tr>
         <td><img src="media/team/refresher.svg" alt="Fuzzmonkey" width="50" /></td>

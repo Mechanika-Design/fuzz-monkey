@@ -45,7 +45,8 @@ function getStrategies(strategy) {
 export async function emptyReport(config) {
     try {
         const { host } = new URL(config.url);
-        const name = `${host}_${moment().format('YYYY-MM-DD_HH:mm:ss')}`;
+        // No ":" in names — illegal in Windows path segments (only valid in "C:\"-style drives).
+        const name = `${host}_${moment().format('YYYY-MM-DD_HH-mm-ss')}`;
         const report = path.join(config.reports, name);
         mkdir.sync(report);
         mkdir.sync(path.join(report, 'screenshots'));
